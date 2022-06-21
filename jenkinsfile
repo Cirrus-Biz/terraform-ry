@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Terraform Change Check') {
             when {
-                expression {sh "Plan:' check.json" != '[0m[1mPlan:[0m 21 to add, 0 to change, 0 to destroy.'}
+                expression {sh "Plan:' check.json" == '[0m[1mPlan:[0m 21 to add, 0 to change, 0 to destroy.'}
             }
             steps {
                 sh "echo 'it works'"
