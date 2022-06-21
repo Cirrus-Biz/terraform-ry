@@ -15,11 +15,13 @@ pipeline {
             }
         }
         stage('Terraform Change Check') {
-            if (1+1 == 2) {
+            steps {
+                if (1+1 == 2) {
                 sh 'echo "it worked"'
-            }
-            else {
-                sh "echo 'it didn't work'"
+                }
+                else {
+                    sh "echo 'it didn't work'"
+                }
             }
         }
     }
