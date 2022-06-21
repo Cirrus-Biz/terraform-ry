@@ -1,0 +1,9 @@
+# terraform files
+
+.terraform
+.terraform.*
+terraform.tfstate*
+*.tfvars
+
+*.txt
+*.json

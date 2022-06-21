@@ -1,5 +1,5 @@
-variable "aws_instance_type" {
-    type = string
-    default = "t2.micro"
-    description = "choose the instance type"
+variable "AWS_ACCESS_KEY" {}
+variable "AWS_SECRET_KEY" {}
+variable "AWS_REGION" {
+  default = "us-east-1"
 }
