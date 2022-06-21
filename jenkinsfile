@@ -15,11 +15,14 @@ pipeline {
             }
         }
         stage('Terraform Change Check') {
-            when {
-                expression(1+1==2)
-            }
             steps {
-                sh 'echo "it worked"'
+                script {
+                    if (env.BRANCH_NAME == 'master') {
+                        echo 'I only execute on the master branch'
+                    } else {
+                        echo 'I execute elsewhere'
+                    }
+                }
             }
         }
     }
