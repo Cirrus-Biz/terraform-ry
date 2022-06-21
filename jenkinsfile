@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Terraform Change Check') {
             environment {
-                changes = sh 'grep 'Plan' check.json'
+                changes = sh 'grep "Plan" check.json'
             }
             steps {
                 sh 'echo ${changes}'
