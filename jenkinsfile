@@ -19,5 +19,6 @@ pipeline {
                 changes = sh 'grep 'Plan' check.json'
             }
             echo ${changes}
+        }
     }
 }
