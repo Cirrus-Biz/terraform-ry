@@ -8,5 +8,14 @@ pipeline {
                 }
             }
         }
+        stage('Terraform Plan') {
+            steps {
+                dir("terraform") {
+                    withAWS(credentials: 'ry-aws-credential', region: "$env.AWS_REGION") {
+                        withCredentials([file(credentialsId: 'tfvars', varible: 'VARS')])
+                    }
+                }
+            }
+        }
     }
 }
