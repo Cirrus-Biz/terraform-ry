@@ -15,8 +15,9 @@ pipeline {
             }
         }
         stage('Terraform Change Check') {
-            if (grep 'Plan' check.json == "[0m[1mPlan:[0m 21 to add, 0 to change, 0 to destroy.")
-                echo 'it worked'
-        }
+            environment {
+                changes = sh 'grep 'Plan' check.json'
+            }
+            echo ${changes}
     }
 }
