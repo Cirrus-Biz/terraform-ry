@@ -11,7 +11,7 @@ pipeline {
                 tfvars = credentials('ry-terraform-vars')
             }
             steps {
-                sh 'echo ${tfvars}'
+                sh 'terraform plan -var-file=${tfvars}'
             }
         }
     }
