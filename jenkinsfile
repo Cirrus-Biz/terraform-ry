@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Terraform Change Check') {
             if (1+1 == 2)
-                echo "it worked"
+                sh 'echo "it worked"'
         }
     }
 }
