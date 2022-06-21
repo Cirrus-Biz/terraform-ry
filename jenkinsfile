@@ -11,17 +11,12 @@ pipeline {
                 tfvars = credentials('ry-terraform-vars')
             }
             steps {
-                sh 'terraform plan -var-file=${tfvars}'
                 sh 'terraform plan -var-file=${tfvars} > check.json'
             }
         }
         stage('Terraform Change Check') {
-            when {
-                expression {sh "Plan:' check.json" == '[0m[1mPlan:[0m 21 to add, 0 to change, 0 to destroy.'}
-            }
-            steps {
-                sh "echo 'it works'"
-            }
+            if (grep 'Plan' check.json == "[0m[1mPlan:[0m 21 to add, 0 to change, 0 to destroy.")
+                echo 'it worked'
         }
     }
 }
