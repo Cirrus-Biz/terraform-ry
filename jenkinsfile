@@ -16,11 +16,8 @@ pipeline {
             }
         }
         stage('Terraform Change Check') {
-            when {
-                expression {sh "Plan:' check.json" != '0 to add, 0 to change, 0 to destroy.'}
-            }
             steps {
-                sh "echo 'it works'"
+                sh "grep 'Plan:' check.json"
             }
         }
     }
