@@ -12,6 +12,12 @@ pipeline {
             }
             steps {
                 sh 'terraform plan -var-file=${tfvars}'
+                sh 'terraform plan -var-file=${tfvars} > check.json'
+            }
+        }
+        stage('Terraform Change Check') {
+            steps {
+                sh "grep 'Plan' check.json "
             }
         }
     }
