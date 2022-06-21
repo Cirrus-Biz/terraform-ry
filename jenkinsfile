@@ -15,16 +15,11 @@ pipeline {
             }
         }
         stage('Terraform Change Check') {
-            steps {
-                step {
-                    if (1+1 == 2) {
-                    sh 'echo "it worked"'
-                    }
-                    else {
-                        sh "echo 'it didn't work'"
-                    }
-                }
-            }
+            if (env.BRANCH_NAME == 'main') {
+            echo 'Hello from main branch'
+        } else {
+            sh "echo 'Hello from ${env.BRANCH_NAME} branch!'"
+        }
         }
     }
 }
