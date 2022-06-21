@@ -7,8 +7,8 @@ pipeline {
             }   
         }
         stage('Terraform Plan') {
+            withCredentials([file(credentailsId: 'ry-terraform-vars', variable: 'ry-tfvars')])
             steps {
-                withCredentials([file(credentailsId: 'ry-terraform-vars', variable: 'ry-tfvars')])
                 sh 'cat $ry-tfvars'
             }
         }
