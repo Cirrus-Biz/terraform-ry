@@ -19,6 +19,7 @@ pipeline {
                 changes = sh 'grep "Plan" check.json'
             }
             steps {
+                if (sh 'grep "Plan" check.json' == '[0m[1mPlan:[0m 21 to add, 0 to change, 0 to destroy.')
                 sh 'echo ${changes}'
             }
         }
