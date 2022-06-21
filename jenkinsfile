@@ -18,7 +18,9 @@ pipeline {
             environment {
                 changes = sh 'grep 'Plan' check.json'
             }
-            echo ${changes}
+            steps {
+                sh 'echo ${changes}'
+            }
         }
     }
 }
