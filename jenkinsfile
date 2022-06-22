@@ -17,8 +17,7 @@ pipeline {
         }
         stage('Terraform Change Check') {
             steps {
-                sh 'cat changekey.txt'
-                sh 'cat checked.txt'
+                sh 'diff changekey.txt checked.txt'
             }
         }
     }
