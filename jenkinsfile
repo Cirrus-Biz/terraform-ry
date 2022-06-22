@@ -16,7 +16,8 @@ pipeline {
         }
         stage('Terraform Change Check') {
             steps {
-               sh 'grep "Plan:" check.json'
+               sh 'grep "Plan:" check.json > checked.json'
+               sh 'cat checked.json'
             }
         }
     }
