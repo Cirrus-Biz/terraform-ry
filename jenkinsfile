@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Terraform Change Check') {
             steps {
-                sh '(ls|diff changekey.txt checked.txt)||terraform apply'
+                sh '(ls|diff changekey.txt checked.txt)||terraform apply -var-file=$tfvars'
             }
         }
     }
