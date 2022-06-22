@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Terraform Change Check') {
             steps {
-                sh 'diff changekey.txt checked.txt'
+                sh '(ls|diff changekey.txt checked.txt)||echo "nothing found"'
             }
         }
     }
