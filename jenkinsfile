@@ -15,9 +15,9 @@ pipeline {
                 sh 'grep "Plan:" check.json > checked.txt'
             }
         }
-        stage('Terraform Change Check') {
+        stage('Terraform Apply') {
             steps {
-                sh '(ls|diff changekey.txt checked.txt)||terraform apply -var-file=$tfvars'
+                sh '(ls|diff changekey.txt checked.txt)||terraform apply -var-file=$tfvars -auto-approve'
             }
         }
     }
