@@ -17,7 +17,7 @@ pipeline {
         stage('Terraform Change Check') {
             steps {
                script {
-                    grep "Plan:" check.json > checked.json
+                    sh 'grep "Plan:" check.json > checked.json'
                     if (checked.json == '[0m[1mPlan:[0m 21 to add, 0 to change, 0 to destroy.') {
                     echo 'it worked'
                 } else {
