@@ -16,8 +16,7 @@ pipeline {
         }
         stage('Terraform Change Check') {
             steps {
-               sh 'grep "Plan:" check.json > checked.json'
-               def data = readJSON file:'checked.json'
+               def data = readJSON file:'check.json'
                 echo "color: ${data.attachments[0].color}"
             }
         }
