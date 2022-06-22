@@ -1,4 +1,7 @@
 pipeline {
+    environment {
+        tfvars = credentials('ry-terraform-vars')
+    }
     agent any
     stages {
         stage('Terraform Init') {
@@ -7,9 +10,6 @@ pipeline {
             }   
         }
         stage('Terraform Plan') {
-            environment {
-                tfvars = credentials('ry-terraform-vars')
-            }
             steps {
                 sh 'terraform plan -var-file=${tfvars} > check.json'
                 sh 'grep "Plan:" check.json > checked.txt'
@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Terraform Change Check') {
             steps {
-                sh '(ls|diff changekey.txt checked.txt)||echo "nothing found"'
+                sh '(ls|diff changekey.txt checked.txt)||terraform apply'
             }
         }
     }
