@@ -18,8 +18,9 @@ pipeline {
         stage('Terraform Change Check') {
             def jsonString = 'checked.json'
             def jsonObj = readJSON text: jsonString
-
-            sh 'echo $jsonObj'
+            steps {
+                sh 'echo $jsonObj'    
+            }
         }
     }
 }
