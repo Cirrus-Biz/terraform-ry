@@ -17,10 +17,10 @@ pipeline {
         stage('Terraform Change Check') {
             steps {
                 script {
-                    if (ls == 'master') {
+                    if (grep 'Plan' check.json == 'master') {
                         echo 'I only execute on the master branch'
                     } else {
-                        ls
+                        echo 'it worked'
                     }
                 }
             }
