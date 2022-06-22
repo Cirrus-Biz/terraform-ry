@@ -12,13 +12,14 @@ pipeline {
             }
             steps {
                 sh 'terraform plan -var-file=${tfvars} > check.json'
+                sh 'grep "Plan:" check.json > checked.json'
             }
         }
         stage('Terraform Change Check') {
-            steps {
-               def data = readJSON file:'check.json'
-                echo "color: ${data.attachments[0].color}"
-            }
+            def jsonString = 'checked.json'
+            def jsonObj = readJSON text: jsonString
+
+            sh 'echo $jsonObj'
         }
     }
 }
