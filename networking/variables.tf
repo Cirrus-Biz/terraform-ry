@@ -8,11 +8,6 @@ variable "public_subnet" {
   default = "10.0.0.128/26"
 }
 
-variable "public_subnet2" {
-  type = string
-  default = "10.0.0.127/25"
-}
-
 variable "private_subnet" {
   type = string
   default = "10.0.0.192/26"
