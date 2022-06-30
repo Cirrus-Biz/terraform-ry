@@ -10,7 +10,7 @@ variable "public_subnet" {
 
 variable "public_subnet2" {
   type = string
-  default = "10.0.0.128/25"
+  default = "10.0.0.127/25"
 }
 
 variable "private_subnet" {
