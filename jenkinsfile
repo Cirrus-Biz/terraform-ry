@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Tflint'){
             steps{
-                sh 'tflint --init'
+                sh 'tflint --help'
                 sh 'tflint'
             }
         }

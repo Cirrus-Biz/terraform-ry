@@ -8,7 +8,7 @@ resource "aws_internet_gateway" "aline_igw" {
 }
 
 # NAT Gateway using subnet_id and allocation_id
-resource "aws_elip" "aline_nate_ip" {
+resource "aws_eip" "aline_nate_ip" {
   vpc = true
 }
 
