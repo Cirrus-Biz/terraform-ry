@@ -4,6 +4,3 @@ terraform.tfstate*
 *.tfvars
 
 *.json
-
-go.mod
-go.sum

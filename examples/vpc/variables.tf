@@ -1,3 +1,6 @@
+variable "vpc_name" {
+  type = string
+}
 
 variable "cidr_ab" {
     type = map
